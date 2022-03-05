@@ -1,0 +1,12 @@
+<header>
+    <p id="brand">VF - Anime</p>
+    <% if (locals.isLoggedIn) { %>
+        <ul>
+            <li><a href="/logout">Logout &rarr;</a></li>
+        </ul>
+    <% } else { %>
+        <ul>
+            <li><a href="/login">Login as Admin</a></li>
+        </ul>
+    <% } %>
+</header>

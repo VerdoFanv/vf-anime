@@ -1,0 +1,161 @@
+@media all and (max-width: 1000px) {
+    /* main page */
+    form#searchForm {
+        width: 60%;
+    }
+
+    .filter-content {
+        margin-top: 20px;
+    }
+
+    section#lists {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .modal-inner {
+        top: 5%;
+        width: 90%;
+        height: 90%;
+    }
+
+    .modal-body {
+        margin-left: 0;
+    }
+
+    .card-header img {
+        height: 170px;
+    }
+
+    section#loginSection, section#AuthSection, section#createSection {
+        width: 70%;
+    }
+
+}
+
+@media all and (min-width: 680px) {
+    .filter-content > button {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@media all and (max-width: 425px) {
+    .filter-menu {
+        display: none;
+    }
+
+    #sectionLabel {
+        width: 100%;
+    }
+
+    form#searchForm {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .filter-content > button {
+        border-radius: 5px;
+        padding: 0 30px;
+        color: white;
+        background-color: red;
+        border: none;
+        cursor: pointer;
+        min-width: 44px;
+        min-height: 44px;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .filter-content > button:active {
+        background-color: rgb(180, 0, 0);
+    }
+
+    section#lists {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .modal-inner {
+        top: 5%;
+        width: 90%;
+        height: 90%;
+    }
+
+    .modal-body {
+        margin-left: 0;
+    }
+
+    .card-header img {
+        height: 170px;
+    }
+
+    section#loginSection, section#AuthSection, section#createSection {
+        width: 90%;
+    }
+
+    .modal-body select {
+        cursor: pointer;
+        margin: 0 10px;
+        border: none;
+        background-color: white;
+        border-radius: 3px;
+        font-size: 1rem;
+    }
+
+    .modal-body label {
+        font-size: 1.2rem;
+        color: #ffeb00;
+        line-height: 40px;
+    }
+}
+
+@media all and (max-width: 375px) {
+    main {
+        padding: 30px;
+    }
+
+    .filter-content > button {
+        padding: 0 20px;
+    }
+
+    .modal-inner {
+        top: 5%;
+        width: 90%;
+        height: 90%;
+    }
+
+    .modal-header {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .modal-header img {
+        height: 400px;
+    }
+
+    .modal-body {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .card-header img {
+        height: 140px;
+    }
+
+    .anime-title {
+        font-size: 1.1rem;
+    }
+}
+
+@media all and (max-width: 320px) {
+    main {
+        padding: 20px;
+    }
+
+    section#loginSection, section#AuthSection, section#createSection {
+        width: 100%;
+    }
+
+    .modal-header img {
+        height: 350px;
+    }
+}

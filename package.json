@@ -1,0 +1,53 @@
+{
+  "name": "anime-list",
+  "version": "1.0.0",
+  "description": "none",
+  "main": "server.js",
+  "scripts": {
+    "dev": "webpack serve --mode=development",
+    "build": "webpack --mode=production",  
+    "start": "NODE_ENV=production node src/server.js",
+    "start:dev": "nodemon src/server.js",
+    "prestart": "npm run build --prefix client",
+    "migrate": "node-pg-migrate",
+    "fix": "npx eslint ./src --fix",
+    "lint": "eslint ./src"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "auto-bind": "^4.0.0",
+    "bcrypt": "^5.0.1",
+    "connect-flash": "^0.1.1",
+    "connect-redis": "^6.0.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "express-session": "^1.17.2",
+    "joi": "^17.4.2",
+    "moment": "^2.29.1",
+    "nanoid": "^3.1.25",
+    "node-pg-migrate": "^5.10.0",
+    "pg": "^8.7.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "redis": "^3.1.2",
+    "regenerator-runtime": "^0.13.9"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.2",
+    "nodemon": "^2.0.12",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.0.0"
+  }
+}

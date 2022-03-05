@@ -1,0 +1,24 @@
+<div class="filter-content">
+    <button id="filterAnimeBtn">Filter</button>
+    <div class="filter-menu">
+        <label for="alphabet">Alphabet</label>
+        <select name="alphabet">
+            <option>A - Z</option>
+            <option>Z - A</option>
+        </select>
+        <label for="year">Tahun</label>
+        <select name="year">
+            <option>Terbaru</option>
+            <option>Terlama</option>
+        </select>
+        <label for="genre">Genre</label>
+        <select name="genre">
+            <option value="Pilih Genre">-- Pilih Genre --</option>
+            <% if (listGenres.length > 0) { %>
+                <% listGenres.forEach((listGenre) => { %>
+                    <option value="<%= listGenre %>"><%= listGenre %></option>
+                <% }) %> 
+            <% } %>
+        </select>
+    </div>
+</div>

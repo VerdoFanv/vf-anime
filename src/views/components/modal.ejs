@@ -1,0 +1,53 @@
+<div class='modal' id="detailAnimeModal">
+    <div class="modal-inner">
+        <button class="close-btn-modal">X</button>
+        <% if (locals.isLoggedIn) { %> 
+            <div class='modal-header' id="modalHeader">
+                
+            </div>
+            <div class='modal-body' id="modalBody">
+    
+            </div>
+        <% } else { %>
+            <div class='modal-header' id="modalHeaderGeneral">
+                    
+            </div>
+            <div class='modal-body' id="modalBodyGeneral">
+
+            </div>
+        <% } %> 
+    </div>
+</div>
+<div class='modal' id="addAnimeModal">
+    <div class="modal-inner">
+        <form action="/" method="POST" id="addAnimeForm" enctype="multipart/form-data">
+            <div class='modal-header'>
+                <button class="close-btn-modal">X</button>
+            </div>
+            <div class='modal-body'>
+                <input type="file" name="img_upload" id="imgUpload">
+                <label for="uploadImage">.jpg .jpeg .png .webp</label>
+                <input type="text" name="anime_title" placeholder="Title" class="form-control">
+                <input type="number" name="anime_year" minlength="3" placeholder="Year" class="form-control">
+                <input type="text" name="anime_rate" placeholder="Rate" class="form-control">
+                <textarea placeholder="Add Description" name="anime_desc" class="form-control" style="height: 200px;"></textarea>
+                <div class="anime-add-genre">
+                    <label for="anime-tags">Add Genre</label>
+                    <select id="addGenreOptions">
+                        <option value="Pilih Genre">-- Pilih Genre --</option>
+                        <% if (listGenres.length > 0) { %> 
+                            <% listGenres.forEach((listGenre) => { %> 
+                                <option value="<%= listGenre %>"><%= listGenre %></option>
+                            <% }) %> 
+                        <% } %>
+                    </select>
+                    <button type="button" id="btnAddGenre">Add this genre</button>
+                </div>
+                <div class="anime-tags" id="animeTags">
+                    
+                </div>
+                <button type="submit" id="addAnimeBtn">Add</button>
+            </div>
+        </form>
+    </div>
+</div>

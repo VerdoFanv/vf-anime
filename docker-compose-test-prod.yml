@@ -1,0 +1,40 @@
+version: "3.7"
+
+services:
+
+  verdo-anime-list-db:
+    image: postgresql
+    restart: always
+    container_name: verdo-anime-list-db
+    ports:
+      - 27017:27017 
+    volumes:
+      - verdo-anime-list-db:/data/db
+    networks: 
+      - verdo-anime-list-network
+
+  verdo-anime-list-app:
+    image: thisk8brd/verdo-anime-list-app:prod
+    build: 
+      context: .
+      target: prod
+    container_name: verdo-anime-list-app
+    restart: always
+    volumes: 
+      - .:/app
+    ports:
+      - "80:5000"
+    depends_on:
+      - verdo-anime-list-db
+    environment:
+      - MONGODB_URI=mongodb://verdo-anime-list-db/verdo-anime-list-db
+    networks: 
+      - verdo-anime-list-network
+
+volumes: 
+  verdo-anime-list-db:
+    name: verdo-anime-list-db
+
+networks: 
+  verdo-anime-list-network:
+    name: verdo-anime-list-network

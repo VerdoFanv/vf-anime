@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../components/head') %>
+    <title><%= page_title %></title>
+</head>
+<body>
+    <main>
+        <section id="AuthSection">
+            <% if (message.length > 0) { %> 
+                <p style="color: red;"><%= message %></p>
+            <% } %>
+            <form action="/authCreate" method="post" id="authForm">
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+                </div>
+                <button type="submit" id="btnSubmit">Submit</button>
+            </form>
+            <a href="/login" class="back-to-login">&#8592; Back to Login</a>
+        </section>
+    </main>
+</body>
+</html>

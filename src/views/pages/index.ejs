@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../components/head') %>
+    <title><%= page_title %></title>
+</head>
+<body>
+    <%- include('../components/header') %>
+    <main>
+        <div id="root"></div>
+        <section id="timeSection">
+            <% if (locals.isLoggedIn) { %>
+                <p>Hello, <%= locals.username %> !</p>
+            <% } %> 
+            <p><%= moment().utcOffset(7).format('DD MMMM, YYYY') %></p>
+        </section>
+        <section id="headMenu">
+            <h1 id="sectionLabel">anime list</h1>
+            <%- include('../components/search') %> 
+            <%- include('../components/filter') %> 
+        </section>
+        <section id="lists">
+            <% if (lists.length < 1) { %>
+                <h1>Tidak ada data yang dapat ditampilkan!</h1>
+            <% } else { %> 
+                <% lists.forEach((list) => { %>
+                    <article class="card">
+                        <div class="card-header">
+                            <a class="open-modal" data-animeid="<%= list.id %> "><img src="upload/<%= list.img %>" alt="" loading="lazy" onerror="this.src='upload/default.png'"></a>
+                        </div>
+                        <div class="card-info">
+                            <p class="anime-title"><%= list.title %></p>
+                            <div class="card-tags">
+                                <% list.genres.forEach((genre) => { %> 
+                                    <p class="anime-genre">#<%= genre %></p>
+                                <% }) %>
+                            </div>
+                            <div class="card-footer">
+                                <p class="anime-rate">&#9733; <%= list.rate %></p>
+                            </div>
+                        </div>
+                    </article>
+                <% }); %>
+            <% } %> 
+        </section>
+        <% if (locals.isLoggedIn) { %>
+            <button id="addAnime">+</button>
+        <% } %>
+        <%- include('../components/modal') %>
+    </main>
+    <script src="js/script.js"></script>
+    <!-- <script src="js/main-script.js"></script> -->
+</body>
+</html>

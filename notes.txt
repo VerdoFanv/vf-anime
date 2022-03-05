@@ -1,0 +1,10 @@
+docker-compose -f docker-compose-test-prod.yml up 
+docker-compose up --build
+docker-compose up
+
+heroku container:login
+heroku create
+docker tag thisk8brd/node-react-starter-app:prod registry.heroku.com/<HEROKU-APP-NAME>/web
+docker push registry.heroku.com/<HEROKU-APP-NAME>/web
+heroku container:release web
+heroku open

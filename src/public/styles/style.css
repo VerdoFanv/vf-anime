@@ -1,0 +1,562 @@
+:root {
+    --main-color: cornflowerblue;
+    --bg-color: rgb(34, 34, 34);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Calibri', sans-serif;
+    background-color: var(--bg-color);
+}
+
+/* header-start */
+header {
+    background-color: var(--main-color);
+    padding: 15px;
+    display: flex;
+    top: 0;
+    position: sticky;
+}
+
+p#brand {
+    color: white;
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+
+header ul {
+    margin-left: auto;
+}
+
+header ul li {
+    display: inline-block;
+    list-style-type: none;
+}
+
+header ul li:nth-child(1) {
+    margin-right: 15px;
+    color: white;
+}
+
+header ul li a {
+    color: white;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+/* header-end */
+
+main {
+    padding: 40px;
+}
+
+#sectionLabel {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+section#lists {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(6, 1fr);
+    width: 100%;
+    overflow-wrap: anywhere;
+}
+
+section#lists > h1 {
+    color: white;
+    text-align: center;
+    grid-column-start: 1;
+    grid-column-end: 8;
+}
+
+/* head-menu */
+section#headMenu {
+    display: flex;
+    margin-bottom: 15px;
+    color: white;
+    flex-wrap: wrap;
+}
+
+.filter-content {
+    margin-left: auto;
+}
+
+.filter-menu {
+    display: flex;
+    color: white;
+}
+
+.filter-menu label {
+    line-height: 40px;
+}
+
+.filter-menu select {
+    cursor: pointer;
+    margin: 0 10px;
+    border: none;
+    background-color: white;
+    border-radius: 3px;
+}
+/* head-menu */
+
+/* card-start */
+article.card {
+    border-radius: 5px;
+    background-color: rgb(66, 66, 66);
+    overflow: hidden;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .1);
+}
+
+.open-modal {
+    cursor: pointer;
+}
+
+.card-header img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card-header img:active {
+    opacity: .7;
+}
+
+.card-info {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.anime-title {
+    font-size: 1.2rem;
+    font-weight: bolder;
+    overflow-y: hidden;
+    color: white;
+    height: 48px;
+}
+
+.card-tags {
+    margin-top: 10px;
+}
+
+.anime-genre {
+    display: inline-block;
+    background-color: blueviolet;
+    margin: 3px;
+    border-radius: 3px;
+    padding: 5px;
+    color: white;
+}
+
+.anime-genre > button {
+    margin-left: 5px;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    color: black;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.anime-genre > button:hover, .anime-genre > button:active {
+    transform: scale(1.08);
+}
+
+.anime-rate {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgb(255, 251, 0);
+    text-align: right;
+}
+
+article.card .card-tags {
+    height: 45px;
+    overflow-y: hidden;
+}
+/* card-end */
+
+/* modal-start */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    animation: transition .3s both;
+    -moz-animation: transition .3s both;
+}
+
+@keyframes transition {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.modal.show {
+    display: block;
+}
+
+.modal-inner {
+    display: grid;
+    position: absolute;
+    top: 2%;
+    right: 0;
+    left: 0;
+    width: 95%;
+    height: 95%;
+    margin: auto;
+    background-color: rgb(66, 66, 66);
+    border-radius: 3px;
+    overflow-y: scroll;
+    grid-template-columns: 1fr 2fr;
+    padding: 10px;
+    z-index: 100;
+}
+
+.modal-header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-header img {
+    width: 100%;
+    height: 500px;
+    object-fit: contain;
+    object-position: center;
+}
+
+#modalHeader.hide, #modalHeaderGeneral.hide {
+    display: none;
+}
+
+#modalBody.expand, #modalBodyGeneral.expand {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.modal-body {
+    margin-left: 15px;
+    padding: 10px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+.modal-body input, textarea {
+    margin: 7px 0;
+}
+
+.modal-body .anime-desc, .modal-body .anime-year {
+    color: white;
+}
+
+.modal-body form {
+    display: inherit;
+    flex-direction: inherit;
+}
+
+.modal p:nth-child(3), .modal p:nth-child(4), .modal p:nth-child(5) {
+    margin-top: 10px;
+}
+
+.modal .anime-tags {
+    margin-top: 10px;
+    text-transform: uppercase;
+    overflow-y: scroll;
+    min-height: 78px;
+    max-height: 78px;
+}
+
+button.close-btn-modal {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    min-width: 44px;
+    min-height: 44px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    margin-left: auto;
+    color: white;
+}
+
+button.close-btn-modal:active {
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.anime-rate-modal {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: orange;
+}
+
+.modal-footer {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: flex;
+    margin-top: 15px;
+    border-top: 2px solid cornflowerblue;
+}
+
+.modal-close-btn {
+    margin: auto;
+    font-size: 13px;
+    color: #8491a5;
+    width: 200px;
+    padding: 16px 0;
+    border: 0;
+    background-color: #f0f4f9;
+    cursor: pointer;
+}
+
+.modal-close-btn:hover {
+    color: #8491a5;
+    background-color: #ccd9ea;
+    transition: 0.3s ease-in-out;
+}
+
+.action-button {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom: 15px;
+}
+
+button#editBtn {
+    margin-right: 15px;
+    border-radius: 3px;
+    background-color: cornflowerblue;
+    padding: 10px 25px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button#editBtn:active {
+    background-color: rgb(63, 102, 175);
+}
+
+button#deleteBtn {
+    background-color: #ff7c00;
+    border-radius: 3px;
+    padding: 10px 25px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button#deleteBtn:active {
+    background-color: rgb(248, 92, 92);
+}
+/* modal-end */
+
+/* login-page-start */
+section#loginSection, section#AuthSection, section#createSection {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+}
+
+section#loginSection a, section#AuthSection a, section#createSection a {
+    color: white;
+}
+
+form#loginForm, form#authForm, form#createForm {
+    padding-top: 80px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    font: inherit;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+button#btnLogin, button#btnSubmit, button#btnCreate {
+    margin: auto;
+    padding: 10px;
+    background-color: cornflowerblue;
+    border: none;
+    border-radius: 3px;
+    width: 100%;
+    color: white;
+    cursor: pointer;
+}
+
+button#btnLogin:active, button#btnSubmit:active, button#btnCreate:active {
+    background-color: rgb(67, 101, 163);
+}
+
+a.back-to-main, a.go-to-createAccount, a.back-to-login {
+    margin-top: 15px;
+    text-align: center;
+    text-decoration: none;
+}
+
+a.back-to-main:active, a.go-to-createAccount:active, a.back-to-login:active {
+    text-decoration: underline;
+}
+/* login-page-end */
+
+/* button-addAnime-start */
+button#addAnime {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    border-radius: 50%;
+    background-color: cornflowerblue;
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .1);
+    cursor: pointer;
+}
+
+button#addAnime:active {
+    background-color: rgb(75, 112, 180);
+}
+/* button-addAnime-end */
+
+/* add-anime-start */
+.anime-add-genre {
+    margin-top: 10px;
+}
+
+.anime-add-genre button {
+    margin-left: 10px;
+    padding: 5px 20px;
+    background-color: green;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+}
+
+.anime-add-genre button:active {
+    background-color: rgb(4, 189, 4);
+}
+
+form#addAnimeForm button[type="submit"] {
+    margin-top: 10px;
+    width: 100%;
+    background-color: cornflowerblue;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: white;
+    font-weight: 600;
+    border-radius: 3px;
+}
+
+form#addAnimeForm button[type="submit"]:active {
+    background-color: rgb(63, 104, 180);
+}
+
+form#addAnimeForm > * {
+    font-family: 'Calibri', sans-serif;
+}
+
+form#addAnimeForm {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+form#addAnimeForm .modal-header {
+    text-align: end;
+}
+
+#imgUpload {
+    margin-left: 15px;
+    background-color: #8491a5;
+    color: white;
+    display: block;
+}
+
+label[for="anime-tags"] {
+    color: white;
+}
+
+label[for="uploadImage"] {
+    margin-left: 15px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+select[id="addGenreOptions"] {
+    cursor: pointer;
+}
+/* add-anime-end */
+
+/* search-form-start */
+form#searchForm {
+    margin-left: 20px;
+    display: flex;
+    width: 40%;
+}
+
+form#searchForm > button[type="submit"] {
+    border-radius: 5px;
+    margin-left: 10px;
+    padding: 0 30px;
+    color: white;
+    background-color: cornflowerblue;
+    border: none;
+    cursor: pointer;
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 1.5rem;
+}
+
+form#searchForm > button[type="submit"]:active {
+    background-color: rgb(66, 105, 179);
+}
+/* search-form-end */
+
+/* time-section-start */
+section#timeSection {
+    margin: 20px 0;
+}
+
+section#timeSection p {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+/* time-section-end */
